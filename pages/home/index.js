@@ -11,35 +11,47 @@
 import React, { PropTypes } from 'react';
 import Layout from '../../components/Layout';
 import s from './styles.css';
-import { title, html } from './index.md';
+// import { title, html } from './index.md';
+
 
 class HomePage extends React.Component {
-
-  static propTypes = {
-    articles: PropTypes.array.isRequired,
-  };
-
-  componentDidMount() {
-    document.title = title;
+  constructor(props) {
+    super(props);
   }
-
+  
+  
+  static propTypes = {
+  };
+  
+  
+  componentDidMount() {
+    document.title = 'Band page';
+  }
+  
   render() {
     return (
       <Layout className={s.content}>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-        <h4>Articles</h4>
-        <ul>
-          {this.props.articles.map((article, i) =>
-            <li key={i}><a href={article.url}>{article.title}</a> by {article.author}</li>
-          )}
-        </ul>
+
+        <h1> {this.props.name} </h1>
+        <img src={this.props.image} />
         <p>
-          <br /><br />
+          {this.props.biography}
         </p>
       </Layout>
     );
   }
 
 }
+
+HomePage.defaultProps = {
+  "name":"The Bloodhound Gang",
+  "image":"http://images4.fanpop.com/image/photos/20000000/Foxtrot-Uniform-Charlie-Kilo-jimmy-pop-20066279-500-270.gif",
+  "biography":"The Bloodhound Gang is an American rock band which began as a hip hop group but branched out into other genres, including punk rock, alternative hip hop, rapcore, funk metal and electronic rock, as their career progressed."
+};
+
+HomePage.propTypes = {
+
+};
+
 
 export default HomePage;
