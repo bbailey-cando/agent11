@@ -9,13 +9,12 @@
   font-family: "tahoma",sans-serif;
   font-size:1em;
 }
-header {
-  background-color:#444;
-}
-header > * { display:inline-block; padding:10px; }
+header { background-color:#444; }
+header > * { display:inline-block; padding:10px; background-color:#4a4a4a; }
 header a.title { float:left; color:#fff; text-decoration:none; }
+header a { text-decoration:none; color:#ddd; }
 header nav { float:right; }
-header nav a { padding:10px; text-decoration:none; color:#ddd; }
+header nav a { padding:10px; color:#ddd; }
 header nav a:hover { text-decoration:underline; }
 
 @media screen and (max-width: 1024px) {

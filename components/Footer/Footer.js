@@ -1,29 +1,23 @@
-/**
- * React Static Boilerplate
- * https://github.com/kriasoft/react-static-boilerplate
- *
- * Copyright © 2015-present Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 import React from 'react';
 import Link from '../Link';
+import s from './Footer.css';
 
 function Footer() {
+
   return (
-    <footer className="mdl-mini-footer">
-      <div className="mdl-mini-footer__left-section">
-        <div className="mdl-logo">© stork industries</div>
-        <ul className="mdl-mini-footer__link-list">
-          <li><Link to="/privacy">Privacy & Terms</Link></li>
+    <footer className={s.footer}>
+      <div className={s.left}>
+        <div className={s.copyright}>© Inc Inc.</div>
+        <ul className={s.leftList}>
+          <li className={s.leftItem}>
+            <Link to="/privacy">Privacy & Terms</Link>
+          </li>
         </ul>
       </div>
-      <div className="mdl-mini-footer__right-section">
-        <ul className="mdl-mini-footer__link-list">
-          <li className="mdl-mini-footer--social-btn" style={{ backgroundColor: 'transparent' }}>
-            <a href="https://github.com/kriasoft/react-static-boilerplate" role="button" title="GitHub">
+      <div className={s.right}>
+        <ul className={s.rightList}>
+          <li className={s.rightItem}>
+            <a href="javascript:;" role="button" title="git'er'done hub">
               <svg width="36" height="36" viewBox="0 0 24 24">
                 <path
                   fill="#fff" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58
@@ -40,8 +34,8 @@ function Footer() {
               </svg>
             </a>
           </li>
-          <li className="mdl-mini-footer--social-btn" style={{ backgroundColor: 'transparent' }}>
-            <a href="https://twitter.com/ReactStatic" role="button" title="Twitter">
+          <li className={s.rightItem}>
+            <a href="javascript:;" role="button" title="tweet upon your twitter">
               <svg width="36" height="36" viewBox="0 0 24 24">
                 <path
                   fill="#fff" d="M17.71,9.33C18.19,8.93 18.75,8.45 19,7.92C18.59,8.13 18.1,8.26

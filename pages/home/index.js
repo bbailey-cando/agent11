@@ -11,18 +11,12 @@
 import React, { PropTypes } from 'react';
 import Layout from '../../components/Layout';
 import s from './styles.css';
-// import { title, html } from './index.md';
 
 
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
   }
-
-
-  static propTypes = {
-  };
-
 
   componentDidMount() {
     document.title = 'Band page - ' + this.props.name;
@@ -33,25 +27,26 @@ class HomePage extends React.Component {
       <Layout className={s.content}>
 
         <h1> {this.props.name} </h1>
-        <div className="imgWrap">
+        <imgWrap>
           <img src={this.props.image} />
-        </div>
+        </imgWrap>
 
-        <div className="about">
+        <about>
           <h2>About</h2>
           <p>
             {this.props.biography}
           </p>
-        </div>
+        </about>
 
-        <div className="members">
+        { /* TODO - react component */ }
+        <members>
           <h2>Members</h2>
-          <ul>
+          <ul className="membersList">
             {this.props.members.map(function(m){
               return <li>{m}</li>
             })}
           </ul>
-        </div>
+        </members>
 
 
       </Layout>
@@ -62,7 +57,8 @@ class HomePage extends React.Component {
 
 HomePage.defaultProps = {
   "name":"The Bloodhound Gang",
-  "image":"http://images4.fanpop.com/image/photos/20000000/Foxtrot-Uniform-Charlie-Kilo-jimmy-pop-20066279-500-270.gif",
+  "image":"https://i.ytimg.com/vi/JZpxaiNV_sM/maxresdefault.jpg",
+//  "image":"http://images4.fanpop.com/image/photos/20000000/Foxtrot-Uniform-Charlie-Kilo-jimmy-pop-20066279-500-270.gif",
   "biography":"The Bloodhound Gang is an American rock band which began as a hip hop group but branched out into other genres, including punk rock, alternative hip hop, rapcore, funk metal and electronic rock, as their career progressed.",
   "members":['Jimmy Pop', 'Jared Hasselhoff', 'Q-Ball', 'The Yin', 'Daniel P. Carter' ]
 };
