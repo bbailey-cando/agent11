@@ -11,7 +11,8 @@ h2 { margin:10px 0; padding:0; font-size:1.5em; line-height:normal; }
 
 imgWrap { overflow:hidden; position:relative; display:block; }
 img { width:350px; }
-about { display:block; width:90%; margin: 10px 0; padding:0 20px; border: 1px solid #222; }
+about { position:relative; display:block; width:90%; margin: 10px 0; padding:0 20px; border: 1px solid #222; }
+about button { position:absolute; top:5px; right:5px; border:0; background-color:transparent; color:blue; }
 p { padding:0 0 10px 0; line-height:1.3em; }
 
 members { display:block; margin:10px 0 10px 20px; color:#bbb; }

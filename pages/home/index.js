@@ -1,15 +1,6 @@
-/**
- * React Static Boilerplate
- * https://github.com/kriasoft/react-static-boilerplate
- *
- * Copyright © 2015-present Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 import React, { PropTypes } from 'react';
 import Layout from '../../components/Layout';
+import About from '../../components/About';
 import s from './styles.css';
 
 
@@ -31,12 +22,7 @@ class HomePage extends React.Component {
           <img src={this.props.image} />
         </imgWrap>
 
-        <about>
-          <h2>About</h2>
-          <p>
-            {this.props.biography}
-          </p>
-        </about>
+        <About biography={this.props.biography} />
 
         { /* TODO - react component */ }
         <members>
