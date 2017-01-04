@@ -11,9 +11,11 @@ h2 { margin:10px 0; padding:0; font-size:1.5em; line-height:normal; }
 
 imgWrap { overflow:hidden; position:relative; display:block; }
 img { width:350px; }
-about { position:relative; display:block; width:90%; margin: 10px 0; padding:0 20px; border: 1px solid #222; }
-about button { position:absolute; top:5px; right:5px; border:0; background-color:transparent; color:blue; }
-p { padding:0 0 10px 0; line-height:1.3em; }
+about { position:relative; display:block; width:90%; margin: 10px 0; padding:10px 20px; border: 1px solid #222; }
+.topRight { position:absolute; top:5px; right:5px; border:0; background-color:transparent; color:blue; }
+about p,
+about textarea { width:100%; padding:0 0 10px 0; line-height:1.3em; }
+about textarea { min-height: 100px; }
 
 members { display:block; margin:10px 0 10px 20px; color:#bbb; }
 members ul { margin:5px 0; padding:0 15px; }
