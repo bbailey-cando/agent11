@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import s from '../Layout/Layout.css';
+import { updateBiography } from '../../core/actions';
 
 var About = React.createClass({
   getInitialState() {
@@ -8,7 +10,6 @@ var About = React.createClass({
   },
 
   startEdit() {
-
     return this.setState({editing:true});
   },
 
@@ -16,9 +17,9 @@ var About = React.createClass({
     return this.setState({editing:false});
   },
 
-  submitEdit(event) {
-    let newValue = document.getElementById("bioTextArea").value;
-    return this.setState({biography:newValue, editing:false});
+  submitEdit() {
+    this.props.submitNewBiography(document.getElementById("bioTextArea").value);
+    return this.setState({editing:false});
   },
 
   render() {
@@ -27,8 +28,8 @@ var About = React.createClass({
         <about>
           <h2>About</h2>
           <button className={s.topRight} onClick={this.stopEdit}>cancel</button>
-          <textarea id="bioTextArea" defaultValue={this.state.biography} />
-          <button onClick={(e)=>this.submitEdit(e)}>submit</button>
+          <textarea id="bioTextArea" defaultValue={this.props.biography} />
+          <button onClick={() => (this.submitEdit())}>submit</button>
         </about> 
       );
     } else {
@@ -37,7 +38,7 @@ var About = React.createClass({
           <h2>About</h2>
           <button className={s.topRight} onClick={this.startEdit}>edit</button>
           <p>
-            {this.state.biography || '-- no bio supplied --'}
+            {this.props.biography || '-- no bio supplied --'}
           </p>
         </about>
       );
@@ -45,4 +46,19 @@ var About = React.createClass({
   }
 });
 
-export default About;
+function mapStoreToProps(storeState) {
+  return {
+    biography: storeState.biography
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    submitNewBiography: function(value){
+      dispatch(updateBiography(value));
+    }
+  };
+}
+
+
+export default connect(mapStoreToProps, mapDispatchToProps)(About);

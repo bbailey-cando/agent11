@@ -1,27 +1,31 @@
-/**
- * React Static Boilerplate
- * https://github.com/kriasoft/react-static-boilerplate
- *
- * Copyright © 2015-present Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
+import { createStore, applyMiddleware, compose } from 'redux';
+// import saga from './saga/mySaga';
+//import createSagaMiddleware from 'redux-saga';
+import reducer from './reducers';
 
-import { createStore } from 'redux';
 
-// Centralized application state
-// For more information visit http://redux.js.org/
-const initialState = { count: 0 };
+function noop(state){
+  return state;
+}
 
-const store = createStore((state = initialState, action) => {
-  // TODO: Add action handlers (aka "reducers")
-  switch (action.type) {
-    case 'COUNT':
-      return { ...state, count: (state.count) + 1 };
-    default:
-      return state;
-  }
-});
+/* TODO - better place for this? */
+const initialState = {
+  "name":"The Bloodhound Gang",
+  "image":"https://i.ytimg.com/vi/JZpxaiNV_sM/maxresdefault.jpg",
+//  "image":"http://images4.fanpop.com/image/photos/20000000/Foxtrot-Uniform-Charlie-Kilo-jimmy-pop-20066279-500-270.gif",
+  "biography":"The Bloodhound Gang is an American rock band which began as a hip hop group but branched out into other genres, including punk rock, alternative hip hop, rapcore, funk metal and electronic rock, as their career progressed.",
+  "members":['Jimmy Pop', 'Jared Hasselhoff', 'Q-Ball', 'The Yin', 'Daniel P. Carter' ]
+};
 
-export default store;
+
+export function newStore(){
+  const reduxDevTool = (window && window.__REDUX_DEVTOOLS_EXTENSION__) && window.__REDUX_DEVTOOLS_EXTENSION__() || noop;
+//  const sagaMiddleware = createSagaMiddleware({ logger: console.log });
+//  const middlewares = compose(applyMiddleware(sagaMiddleware), reduxDevTool) ;
+  const store = createStore(reducer, initialState); // TODO - , middlewares);
+//  sagaMiddleware.run(saga);
+
+  return store;
+}
+
+export default newStore();
