@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import s from '../Layout/Layout.css';
-import { updateBiography } from '../../core/actions';
+import { putBiography } from '../../core/actions';
 
 var About = React.createClass({
   getInitialState() {
@@ -18,7 +18,8 @@ var About = React.createClass({
   },
 
   submitEdit() {
-    this.props.submitNewBiography(document.getElementById("bioTextArea").value);
+    let newBio = document.getElementById("bioTextArea").value;
+    this.props.submitNewBiography(newBio);
     return this.setState({editing:false});
   },
 
@@ -55,7 +56,8 @@ function mapStoreToProps(storeState) {
 function mapDispatchToProps(dispatch) {
   return {
     submitNewBiography: function(value){
-      dispatch(updateBiography(value));
+      let action = putBiography(value);
+      dispatch(action);
     }
   };
 }

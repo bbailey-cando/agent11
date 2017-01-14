@@ -21,6 +21,7 @@
     "react-mdl": "^1.9.0",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
+    "redux-saga": "^0.14.2",
     "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {

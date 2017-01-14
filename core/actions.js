@@ -1,7 +1,15 @@
-export const UPDATE_BIOGRAPHY = 'UPDATE_BIOGRAPHY';
-export function updateBiography(new_bio) {
+export const PUT_BIOGRAPHY   = 'PUT_BIOGRAPHY';
+export const FETCH_BIOGRAPHY = 'FETCH_BIOGRAPHY';
+
+export function putBiography(new_bio) {
   return {
-    type: UPDATE_BIOGRAPHY,
+    type: PUT_BIOGRAPHY,
     payload: new_bio
+  };
+}
+
+export function fetchBiography() {
+  return {
+    type: FETCH_BIOGRAPHY
   };
 }

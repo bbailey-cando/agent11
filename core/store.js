@@ -1,7 +1,8 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-// import saga from './saga/mySaga';
-//import createSagaMiddleware from 'redux-saga';
+import createSagaMiddleware from 'redux-saga';
 import reducer from './reducers';
+import { fetchBiography } from './actions';
+import sagas from './sagas';
 
 
 function noop(state){
@@ -20,10 +21,15 @@ const initialState = {
 
 export function newStore(){
   const reduxDevTool = (window && window.__REDUX_DEVTOOLS_EXTENSION__) && window.__REDUX_DEVTOOLS_EXTENSION__() || noop;
-//  const sagaMiddleware = createSagaMiddleware({ logger: console.log });
-//  const middlewares = compose(applyMiddleware(sagaMiddleware), reduxDevTool) ;
-  const store = createStore(reducer, initialState); // TODO - , middlewares);
-//  sagaMiddleware.run(saga);
+  const sagaMiddleware = createSagaMiddleware(); // , { logger: console.log });
+
+  const middlewares = compose(applyMiddleware(sagaMiddleware), reduxDevTool);
+
+  const store = createStore(reducer, initialState, middlewares);
+  sagaMiddleware.run(sagas.putBiography);
+  sagaMiddleware.run(sagas.fetchBiography);
+
+  store.dispatch(fetchBiography());
 
   return store;
 }
