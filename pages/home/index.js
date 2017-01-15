@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import Layout from '../../components/Layout';
 import About from '../../components/About';
+import BandImage from '../../components/BandImage';
 import { connect } from 'react-redux';
 import s from './styles.css';
 
@@ -18,9 +19,7 @@ class HomePage extends React.Component {
       <Layout className={s.content}>
 
         <h1> {this.props.name} </h1>
-        <imgWrap>
-          <img src={this.props.image} />
-        </imgWrap>
+        <BandImage />
 
         <About store={this.props.store} biography={this.props.biography}  />
 
