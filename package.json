@@ -14,6 +14,7 @@
     "eslint-plugin-import": "^1.16.0",
     "eslint-plugin-jsx-a11y": "^1.5.5",
     "fastclick": "^1.0.6",
+    "firebase": "^3.6.6",
     "firebase-rest": "^1.0.0",
     "history": "^3.0.0",
     "react": "^15.2.1",
