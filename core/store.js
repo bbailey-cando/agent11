@@ -29,6 +29,7 @@ export function newStore(){
   const store = createStore(reducer, initialState, middlewares);
   sagaMiddleware.run(sagas.putBiography);
   sagaMiddleware.run(sagas.fetchBiography);
+  sagaMiddleware.run(sagas.uploadImage);
 
   store.dispatch(fetchBiography());
 
