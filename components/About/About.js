@@ -31,7 +31,7 @@ var About = React.createClass({
           <button className={s.topRight} onClick={this.stopEdit}>cancel</button>
           <textarea id="bioTextArea" defaultValue={this.props.biography} />
           <button onClick={() => (this.submitEdit())}>submit</button>
-        </about> 
+        </about>
       );
     } else {
       return (
@@ -49,7 +49,8 @@ var About = React.createClass({
 
 function mapStoreToProps(storeState) {
   return {
-    biography: storeState.biography
+    biography: storeState.biography,
+    image: storeState.image
   };
 }
 

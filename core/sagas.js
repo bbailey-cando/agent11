@@ -46,16 +46,32 @@ function* fetchBiography(uid) {
   }
 }
 
-/*console.log(error.code);
-  switch (error.code) {
-    case 'storage/unauthorized': // User doesn't have permission to access the object
-      break;
-    case 'storage/canceled': // User canceled the upload
-      break;
-    case 'storage/unknown': // Unknown error occurred, inspect error.serverResponse
-      break;
-  } */
+function* putImageURL() {
+  while(true) {
+    const action = yield take("PUT_IMAGE_URL");
+    try {
+      console.log('putting image url: ' + action.newURL);
+      yield jsonClient.put('/imageURL', action.newURL);
+      yield put({ type: 'IMAGE_URL_PUT_SUCCEEDED', payload:action.payload });
+    } catch(error) {
+      yield put({ type: 'IMAGE_URL_PUT_FAILED', error });
+    }
+  }
+}
 
+function* fetchImageURL() {
+  try {
+  console.log('take FETCH_IMAGE_URL');
+    yield take("FETCH_IMAGE_URL");
+    console.log('fetching!');
+    let data = yield jsonClient.get('/imageURL');
+    var whatToYield = { type: 'IMAGE_URL_FETCH_SUCCEEDED', imageURL:data['body'] };
+    yield put(whatToYield);
+
+  } catch(error) {
+    yield put({ type: 'IMAGE_URL_FETCH_FAILED', error });
+  }
+}
 
 
 function* uploadImage(){
@@ -86,8 +102,9 @@ function* uploadImage(){
 
   ////////////////////////////////////////
   let _success = function(){
-    const newUrl = window.uploadTask.snapshot.downloadURL;
-    store.dispatch({ type: 'IMAGE_UPLOAD_SUCCEEDED', newImageURL:newUrl });
+    const newURL = window.uploadTask.snapshot.downloadURL;
+    store.dispatch({ type: 'IMAGE_UPLOAD_SUCCEEDED', newURL });
+    store.dispatch({ type: 'PUT_IMAGE_URL', newURL });
   };
 
   ////////////////////////////////////////
@@ -109,4 +126,4 @@ window.uploadTask = uploadTask; // TODO - better way to pass this object to the 
   }
 }
 
-export default { putBiography, fetchBiography, uploadImage };
+export default { putBiography, fetchBiography, uploadImage, putImageURL, fetchImageURL };

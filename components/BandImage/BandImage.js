@@ -24,7 +24,9 @@ var BandImage = React.createClass({
   render() {
     return (
         <imgWrap>
-          <img src={this.props.image} onClick={this.imageClicked} />
+        {this.props.image}
+          <img src={this.props.image || 'https://firebasestorage.googleapis.com/v0/b/agent11-api.appspot.com/o/noImage.png?alt=media&token=6cb2cd37-c529-4cb8-ad42-7594b5929495'}
+               onClick={this.imageClicked} />
           <input style={{display:'none'}}
                  id="image-file"
                  type="file"
