@@ -15,6 +15,17 @@ var BandImage = React.createClass({
     }
   },
 
+  // show/hide on mouseenter/exit doesn't appear to be possible in css via react
+  showThing(){
+    let banner = document.getElementsByTagName("banner")[0];
+    banner.style.display = "block";
+  },
+
+  hideThing(){
+    let banner = document.getElementsByTagName("banner")[0];
+    banner.style.display = "none";
+  },
+
   fileSelected(event){
     let file = event.target.files[0];
     this.props.submitNewImage(file);
@@ -24,7 +35,8 @@ var BandImage = React.createClass({
   render() {
     let defaultImage = 'https://firebasestorage.googleapis.com/v0/b/agent11-api.appspot.com/o/noImage.png?alt=media&token=6cb2cd37-c529-4cb8-ad42-7594b5929495';
     return (
-        <imgWrap>
+        <imgWrap onMouseOver={this.showThing} onMouseOut={this.hideThing}>
+          <banner>Click to upload a new band image</banner>
           <img src={this.props.image || defaultImage}
                onClick={this.imageClicked} />
           <input style={{display:'none'}}
