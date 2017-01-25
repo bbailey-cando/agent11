@@ -12,10 +12,6 @@ function noop(state){
 /* TODO - better place for this? */
 const initialState = {
   "name":"The Bloodhound Gang",
-//"image":"https://i.ytimg.com/vi/JZpxaiNV_sM/maxresdefault.jpg",
-//"image":"https://firebasestorage.googleapis.com/v0/b/agent11-api.appspot.com/o/maxresdefault.jpg?alt=media&token=2f7ba16c-f817-4acb-bd8f-069704a7b4a2",
-//"image":"http://images4.fanpop.com/image/photos/20000000/Foxtrot-Uniform-Charlie-Kilo-jimmy-pop-20066279-500-270.gif",
-//"image":"https://firebasestorage.googleapis.com/v0/b/agent11-api.appspot.com/o/images%2FbandImage.jpg", // ?alt=media&token=840f6579-9cef-42c9-9c64-8632b5ba76df
   "biography":"The Bloodhound Gang is an American rock band which began as a hip hop group but branched out into other genres, including punk rock, alternative hip hop, rapcore, funk metal and electronic rock, as their career progressed.",
   "members":['Jimmy Pop', 'Jared Hasselhoff', 'Q-Ball', 'The Yin', 'Daniel P. Carter' ]
 };

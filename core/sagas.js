@@ -1,4 +1,4 @@
-import { put, take, apply, call } from 'redux-saga/effects';
+import { put, take } from 'redux-saga/effects';
 import store from './store';
 var firebase = require('firebase');
 
@@ -24,7 +24,6 @@ var jsonClient =
 function* putBiography() {
   while(true) {
     const action = yield take("PUT_BIOGRAPHY");
-    // TODO action is undefined, why??
     try {
       yield jsonClient.put('/biography', action.payload);
       yield put({ type: 'BIOGRAPHY_PUT_SUCCEEDED', payload:action.payload });
@@ -50,7 +49,6 @@ function* putImageURL() {
   while(true) {
     const action = yield take("PUT_IMAGE_URL");
     try {
-      console.log('putting image url: ' + action.newURL);
       yield jsonClient.put('/imageURL', action.newURL);
       yield put({ type: 'IMAGE_URL_PUT_SUCCEEDED', payload:action.payload });
     } catch(error) {
@@ -61,9 +59,7 @@ function* putImageURL() {
 
 function* fetchImageURL() {
   try {
-  console.log('take FETCH_IMAGE_URL');
     yield take("FETCH_IMAGE_URL");
-    console.log('fetching!');
     let data = yield jsonClient.get('/imageURL');
     var whatToYield = { type: 'IMAGE_URL_FETCH_SUCCEEDED', imageURL:data['body'] };
     yield put(whatToYield);
@@ -117,9 +113,8 @@ function* uploadImage(){
       let uploadTask = storageRef.child('images/bandImage.jpg').put(action.payload, metadata);
 
       // Listen for state changes, errors, and completion of the upload.
-      console.log('calling uploadTask.on()');
 window.uploadTask = uploadTask; // TODO - better way to pass this object to the success callback
-      return uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, _snapshot, _error, _success);
+      uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, _snapshot, _error, _success);
     } catch(error) {
       yield put({ type: 'IMAGE_UPLOAD_FAILED', error });
     }

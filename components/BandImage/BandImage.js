@@ -22,10 +22,10 @@ var BandImage = React.createClass({
   },
 
   render() {
+    let defaultImage = 'https://firebasestorage.googleapis.com/v0/b/agent11-api.appspot.com/o/noImage.png?alt=media&token=6cb2cd37-c529-4cb8-ad42-7594b5929495';
     return (
         <imgWrap>
-        {this.props.image}
-          <img src={this.props.image || 'https://firebasestorage.googleapis.com/v0/b/agent11-api.appspot.com/o/noImage.png?alt=media&token=6cb2cd37-c529-4cb8-ad42-7594b5929495'}
+          <img src={this.props.image || defaultImage}
                onClick={this.imageClicked} />
           <input style={{display:'none'}}
                  id="image-file"
