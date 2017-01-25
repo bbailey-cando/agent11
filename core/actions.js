@@ -25,7 +25,6 @@ export function uploadImage(imageFile) {
 }
 
 export function putImageURL(new_url) {
-  console.log('putImageURL("' + new_url + '")');
   return {
     type: PUT_IMAGE_URL,
     payload: new_url

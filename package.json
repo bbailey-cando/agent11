@@ -17,6 +17,7 @@
     "firebase": "^3.6.6",
     "firebase-rest": "^1.0.0",
     "history": "^3.0.0",
+    "rc-progress": "^2.0.6",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-mdl": "^1.9.0",

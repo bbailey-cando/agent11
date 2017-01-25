@@ -1,4 +1,5 @@
 import React from 'react';
+import { Line, Circle } from 'rc-progress';
 import { connect } from 'react-redux';
 import { uploadImage } from '../../core/actions';
 
@@ -32,6 +33,10 @@ var BandImage = React.createClass({
     return this.state;
   },
 
+  getImageUploadProgress(){
+    return this.props.imageUploadProgress;
+  },
+
   render() {
     let defaultImage = 'https://firebasestorage.googleapis.com/v0/b/agent11-api.appspot.com/o/noImage.png?alt=media&token=6cb2cd37-c529-4cb8-ad42-7594b5929495';
     return (
@@ -43,6 +48,11 @@ var BandImage = React.createClass({
                  id="image-file"
                  type="file"
                  onChange={this.fileSelected} />
+          {(this.props.percent) ?
+            <Line percent={this.props.percent} strokeWidth="2" strokeColor="#f9aa34" strokeLinecap="square" />
+           :(
+           <span></span>
+            )}
         </imgWrap>
     );
   }
@@ -50,7 +60,8 @@ var BandImage = React.createClass({
 
 function mapStoreToProps(storeState) {
   return {
-    image: storeState.image
+    image:   storeState.image,
+    percent: storeState.imageUploadProgress
   };
 }
 
