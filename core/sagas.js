@@ -1,6 +1,7 @@
 import { put, take } from 'redux-saga/effects';
 import store from './store';
 var firebase = require('firebase');
+import actions from './actions';
 
 // TODO - move this block somewhere better?
 // Set the configuration for your app
@@ -75,20 +76,7 @@ function* uploadImage(){
   ////////////////////////////////////////
   let _snapshot = function(snapshot){
     var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    console.log('Upload is ' + progress + '% done');
-
-    switch (snapshot.state) {
-      case firebase.storage.TaskState.PAUSED: // or 'paused'
-        console.log('Upload is paused');
-        break;
-      case firebase.storage.TaskState.RUNNING: // or 'running'
-        console.log('Upload is running');
-        break;
-      default:
-        console.log(snapshot);
-        break;
-    }
-    return { type:'IMAGE_UPLOAD_SNAPSHOT', progress:progress };
+    store.dispatch(actions.imageUploadSnapshot(progress));
   };
 
   ////////////////////////////////////////
@@ -99,8 +87,8 @@ function* uploadImage(){
   ////////////////////////////////////////
   let _success = function(){
     const newURL = window.uploadTask.snapshot.downloadURL;
-    store.dispatch({ type: 'IMAGE_UPLOAD_SUCCEEDED', newURL });
-    store.dispatch({ type: 'PUT_IMAGE_URL', newURL });
+    store.dispatch(actions.imageUploadSucceded(newURL));
+    store.dispatch(actions.putImageURL(newURL));
   };
 
   ////////////////////////////////////////

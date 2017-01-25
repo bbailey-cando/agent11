@@ -25,15 +25,12 @@ const rootReducer = (state, action) => {
       );
 
     case 'FETCH_IMAGE_URL':
-      console.log('reducer: FETCH_IMAGE_URL');
       return state;
     case 'PUT_IMAGE_URL':
-      console.log('PUT_NEW_IMAGE, running, image = '+ action.newURL);
       return Object.assign({}, state, {image: action.newURL});
     case 'IMAGE_URL_PUT_SUCCEEDED':
       return state;
     case 'IMAGE_URL_FETCH_SUCCEEDED':
-      console.log(action);
       return Object.assign({}, state, {image: action.imageURL});
 
     default:

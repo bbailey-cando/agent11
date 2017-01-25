@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import reducer from './reducers';
-import { fetchBiography, fetchImageURL } from './actions';
+import actions from './actions';
 import sagas from './sagas';
 
 
@@ -30,8 +30,8 @@ export function newStore(){
   sagaMiddleware.run(sagas.putImageURL);
   sagaMiddleware.run(sagas.fetchImageURL);
 
-  store.dispatch(fetchBiography());
-  store.dispatch(fetchImageURL());
+  store.dispatch(actions.fetchBiography());
+  store.dispatch(actions.fetchImageURL());
 
   return store;
 }

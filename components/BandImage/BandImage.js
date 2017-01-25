@@ -1,7 +1,7 @@
 import React from 'react';
-import { Line, Circle } from 'rc-progress';
+import { Line } from 'rc-progress';
 import { connect } from 'react-redux';
-import { uploadImage } from '../../core/actions';
+import actions from '../../core/actions';
 
 
 var BandImage = React.createClass({
@@ -68,7 +68,7 @@ function mapStoreToProps(storeState) {
 function mapDispatchToProps(dispatch) {
   return {
     submitNewImage: function(value){
-      let action = uploadImage(value);
+      let action = actions.uploadImage(value);
       dispatch(action);
     }
   };

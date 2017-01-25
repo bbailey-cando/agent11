@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import s from '../Layout/Layout.css';
-import { putBiography } from '../../core/actions';
+import actions from '../../core/actions';
 
 var About = React.createClass({
   getInitialState() {
@@ -57,7 +57,7 @@ function mapStoreToProps(storeState) {
 function mapDispatchToProps(dispatch) {
   return {
     submitNewBiography: function(value){
-      let action = putBiography(value);
+      let action = actions.putBiography(value);
       dispatch(action);
     }
   };
