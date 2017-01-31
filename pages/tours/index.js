@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '../../components/Layout';
 import s from './styles.css';
 
+
 const data = [
   { name:"Gila River Arena",
     location:"Phoenix, AZ",
@@ -21,6 +22,7 @@ const data = [
 ];
 
 
+
 class TourPage extends React.Component {
   componentDidMount() {
 //  document.title = title;
@@ -28,21 +30,25 @@ class TourPage extends React.Component {
 
   render() {
     // TODO - fix title
+    // TODO - convert <tours> to component
     return (
       <Layout className={s.content}>
         <h1>Tours</h1>
+
         <tours>
+
+
           <table>
             <tbody>
             {data.map(function(v, index){
               return <tr key={index}>
                       { (v.logoURL) ?
-                        <td class="c1"><img src={v.logoURL} title={v.name} /></td>
-                      : <td class="c1">{v.name}</td>
+                        <td className="c1"><img className="logo" src={v.logoURL} title={v.name} /></td>
+                      : <td className="c1">{v.name}</td>
                       }
-                      <td class="c2">{v.date}</td>
-                      <td class="c3">{v.location}</td>
-                      <td class="c4">
+                      <td className="c2">{v.date}</td>
+                      <td className="c3">{v.location}</td>
+                      <td className="c4">
                         { (v.imageURL) ?
                           <a href={v.imageURL} target="_blank">
                              <img src={v.imageURL} />

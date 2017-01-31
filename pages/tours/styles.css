@@ -1,4 +1,12 @@
-tours img { max-width:150px; }
+tours { display:block; }
+tours img { max-height:100px; }
+tours table { width:100% }
+tours .c1 { width:20%; }
+tours .logo { height:50px; }
+tours .c2 { width:20%; }
+tours .c3 { width:20%; }
+tours .c4 { width:20%; }
+tours .c4 img { height:100px; }
 
 
 @media screen and (max-width: 1024px) {
