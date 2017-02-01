@@ -1,4 +1,4 @@
-tours { display:block; }
+tours { display:block; padding:20px 0; }
 tours img { max-height:100px; }
 tours table { width:100% }
 tours .c1 { width:20%; }

@@ -1,0 +1,6 @@
+{
+  "name": "sandimage",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Tours.js"
+}
