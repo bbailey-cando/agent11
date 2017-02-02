@@ -48,7 +48,7 @@ var Tours = React.createClass({
     if (this.state.editing){
       newTourRow =
         <tr key="newTour">
-          <td var className="c0"><a href="javascript:;">cancel</a></td>
+          <td var className="c0"><a href="javascript:;" onClick={this.stopEdit}>cancel</a></td>
           <td className="c1"><input type="text" id="newTourVenueNameOrLogoURL" defaultValue="Venue name or logo URL"/></td>
           <td className="c2"><input type="date" id="newTourDate" /></td>
           <td className="c3"><input type="text" id="newTourLocation" defaultValue="Location" /></td>
@@ -58,7 +58,7 @@ var Tours = React.createClass({
       newTourRow =
         <tr key="newTour">
           <td var className="c0">
-            <a className={s.plusWrapper} href="javascript:;">
+            <a className={s.plusWrapper} href="javascript:;" onClick={this.startEdit}>
               <img className={s.plus}
                    src="https://firebasestorage.googleapis.com/v0/b/agent11-api.appspot.com/o/images%2Fassets%2FplusIcon.png?alt=media&token=53b629d0-0a21-4dd6-b10b-8034c52a7135" />
             </a>
@@ -95,6 +95,11 @@ var Tours = React.createClass({
         {newTourRow}
         </tbody>
       </table>
+      {(this.state.editing) ?
+        <button className={s.submitButton} onClick={this.submitEdit}>Submit</button>
+      :
+        <span></span>
+      }
     </tours>
   )}
 });

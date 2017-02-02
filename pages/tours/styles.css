@@ -11,6 +11,14 @@ tours input { padding:10px; }
 .c4 img { height:100px; }
 .plusWrapper { display:inline-block; width:27px; height:28px; background-color:#555; }
 .plus { width:100%; }
+.submitButton {
+  margin-top: 20px;
+  padding: 8px 22px;
+  border: 0;
+  background-color: #cc2000;
+  color: #ddd;
+  font-size: 1.3em;
+}
 
 @media screen and (max-width: 1024px) {
 
