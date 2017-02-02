@@ -4,7 +4,6 @@ import Tours from '../../components/Tours';
 import { connect } from 'react-redux';
 import s from './styles.css';
 
-
 class TourPage extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +16,7 @@ class TourPage extends React.Component {
   render() {
     // TODO - fix title
     return (
-      <Layout className={s.content}>
+      <Layout>
         <h1>{this.props.name} Tours</h1>
 
         <Tours store={this.props.store} />

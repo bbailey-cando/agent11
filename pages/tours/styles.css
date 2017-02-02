@@ -1,13 +1,16 @@
 tours { display:block; padding:20px 0; }
 tours img { max-height:100px; }
 tours table { width:100% }
-tours .c1 { width:20%; }
-tours .logo { height:50px; }
-tours .c2 { width:20%; }
-tours .c3 { width:20%; }
-tours .c4 { width:20%; }
-tours .c4 img { height:100px; }
-
+tours input { padding:10px; }
+.c0 { width:5%; }
+.c1 { width:20%; }
+.logo { height:50px; }
+.c2 { width:20%; background-color:red; }
+.c3 { width:20%; }
+.c4 { width:20%; }
+.c4 img { height:100px; }
+.plusWrapper { display:inline-block; width:27px; height:28px; background-color:#555; }
+.plus { width:100%; }
 
 @media screen and (max-width: 1024px) {
 

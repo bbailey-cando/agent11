@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import s from '../Layout/Layout.css';
 import actions from '../../core/actions';
+import s from '../../pages/tours/styles.css';
+
 
 const data = [
   { name:"Gila River Arena",
@@ -24,8 +25,7 @@ const data = [
 
 var Tours = React.createClass({
   getInitialState() {
-    return { biography:this.props.biography,
-             editing:false };
+    return { editing:false };
   },
 
   startEdit() {
@@ -37,18 +37,46 @@ var Tours = React.createClass({
   },
 
   submitEdit() {
-    let newBio = document.getElementById("bioTextArea").value;
-    this.props.submitNewBiography(newBio);
+    let newTour = document.getElementById("newTour").value;
+    this.props.submitNewBiography(newTour);
     return this.setState({editing:false});
   },
 
   render(){
+    let newTourRow = "";
+
+    if (this.state.editing){
+      newTourRow =
+        <tr key="newTour">
+          <td var className="c0"><a href="javascript:;">cancel</a></td>
+          <td className="c1"><input type="text" id="newTourVenueNameOrLogoURL" defaultValue="Venue name or logo URL"/></td>
+          <td className="c2"><input type="date" id="newTourDate" /></td>
+          <td className="c3"><input type="text" id="newTourLocation" defaultValue="Location" /></td>
+          <td className="c4"><input type="text" id="newTourImageURL" defaultValue="Venue image URL" /></td>
+        </tr>;
+    } else {
+      newTourRow =
+        <tr key="newTour">
+          <td var className="c0">
+            <a className={s.plusWrapper} href="javascript:;">
+              <img className={s.plus}
+                   src="https://firebasestorage.googleapis.com/v0/b/agent11-api.appspot.com/o/images%2Fassets%2FplusIcon.png?alt=media&token=53b629d0-0a21-4dd6-b10b-8034c52a7135" />
+            </a>
+          </td>
+          <td className="c1">Click to add a new tour date and venue</td>
+          <td className="c2"></td>
+          <td className="c3"></td>
+          <td className="c4"></td>
+        </tr>;
+    }
+
     return (
-    <tours>
+      <tours>
       <table>
         <tbody>
         {data.map(function(v, index){
           return <tr key={index}>
+                  <td var className="c0">&nbsp;</td>
                   { (v.logoURL) ?
                     <td className="c1"><img className="logo" src={v.logoURL} title={v.name} /></td>
                   : <td className="c1">{v.name}</td>
@@ -64,6 +92,7 @@ var Tours = React.createClass({
                   </td>
                 </tr>;
         })}
+        {newTourRow}
         </tbody>
       </table>
     </tours>
@@ -71,10 +100,7 @@ var Tours = React.createClass({
 });
 
 function mapStoreToProps(storeState) {
-  return {
-//  biography: storeState.biography,
-//  image: storeState.image
-  };
+  return storeState;
 }
 
 function mapDispatchToProps(dispatch) {
