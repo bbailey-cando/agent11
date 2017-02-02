@@ -33,13 +33,24 @@ var Tours = React.createClass({
   },
 
   stopEdit() {
+    document.getElementById("newTourVenueNameOrLogoURL").value = '';
+    document.getElementById("newTourDate").value = '';
+    document.getElementById("newTourLocation").value = '';
+    document.getElementById("newTourImageURL").value = '';
     return this.setState({editing:false});
   },
 
   submitEdit() {
-    let newTour = document.getElementById("newTour").value;
-    this.props.submitNewBiography(newTour);
-    return this.setState({editing:false});
+    let values = {
+        nameOrLogoURL:document.getElementById("newTourVenueNameOrLogoURL".value),
+             tourDate:document.getElementById("newTourDate").value,
+         tourLocation:document.getElementById("newTourLocation").value,
+         tourImageURL:document.getElementById("newTourImageURL").value
+    };
+
+    console.log(values);
+//    this.props.submitNewBiography(newTour);
+    return this.state; // this.setState({editing:false});
   },
 
   render(){
@@ -47,7 +58,7 @@ var Tours = React.createClass({
 
     if (this.state.editing){
       newTourRow =
-        <tr key="newTour">
+        <tr key="newTour" id="newTourRow">
           <td var className="c0"><a href="javascript:;" onClick={this.stopEdit}>cancel</a></td>
           <td className="c1"><input type="text" id="newTourVenueNameOrLogoURL" defaultValue="Venue name or logo URL"/></td>
           <td className="c2"><input type="date" id="newTourDate" /></td>
