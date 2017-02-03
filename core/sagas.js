@@ -111,12 +111,11 @@ window.uploadTask = uploadTask; // TODO - better way to pass this object to the 
 
 function* fetchTourDates() {
   while(true){
+    yield take("FETCH_TOUR_DATES");
     try {
-      yield take("FETCH_TOUR_DATES");
       let data = yield jsonClient.get('/tourDates');
       var whatToYield = { type: 'TOUR_DATE_FETCH_SUCCEEDED', payload:data['body'] };
       yield put(whatToYield);
-
     } catch(error) {
       yield put({ type: 'TOUR_DATE_FETCH_FAILED', error });
     }

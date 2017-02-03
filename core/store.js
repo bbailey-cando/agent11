@@ -29,9 +29,11 @@ export function newStore(){
   sagaMiddleware.run(sagas.uploadImage);
   sagaMiddleware.run(sagas.putImageURL);
   sagaMiddleware.run(sagas.fetchImageURL);
+  sagaMiddleware.run(sagas.fetchTourDates);
 
   store.dispatch(actions.fetchBiography());
   store.dispatch(actions.fetchImageURL());
+  store.dispatch(actions.fetchTourDates());
 
   return store;
 }

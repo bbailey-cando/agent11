@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import actions from '../../core/actions';
 import s from '../../pages/tours/styles.css';
 
-
+/*
 const data = [
   { name:"Gila River Arena",
     location:"Phoenix, AZ",
@@ -20,8 +20,7 @@ const data = [
     date:"Feb 8, 2017",
     logoURL:"https://firebasestorage.googleapis.com/v0/b/agent11-api.appspot.com/o/images%2Fvenues%2FRiversideLive_Logo.png?alt=media&token=9a48756f-3c10-4bdb-8ad0-eb38fe079085",
     imageURL:"https://firebasestorage.googleapis.com/v0/b/agent11-api.appspot.com/o/images%2Fvenues%2FFox_Theater%2C_Riverside_CA.jpg?alt=media&token=f349cbe7-0be6-4de9-b9c2-cf2bd79849e7" }
-];
-
+]; */
 
 var Tours = React.createClass({
   getInitialState() {
@@ -83,29 +82,33 @@ var Tours = React.createClass({
 
     return (
       <tours>
-      <table>
-        <tbody>
-        {data.map(function(v, index){
-          return <tr key={index}>
-                  <td className="c0">&nbsp;</td>
-                  { (v.logoURL) ?
-                    <td className="c1"><img className="logo" src={v.logoURL} title={v.name} /></td>
-                  : <td className="c1">{v.name}</td>
-                  }
-                  <td className="c2">{v.date}</td>
-                  <td className="c3">{v.location}</td>
-                  <td className="c4">
-                    { (v.imageURL) ?
-                      <a href={v.imageURL} target="_blank">
-                         <img src={v.imageURL} />
-                      </a>
-                    : <span></span> }
-                  </td>
-                </tr>;
-        })}
-        {newTourRow}
-        </tbody>
-      </table>
+      {(this.props.tourDates) ?
+        <table>
+          <tbody>
+          {this.props.tourDates.map(function(v, index){
+            return <tr key={index}>
+                    <td className="c0">&nbsp;</td>
+                    { (v.logoURL) ?
+                      <td className="c1"><img className="logo" src={v.logoURL} title={v.name} /></td>
+                    : <td className="c1">{v.name}</td>
+                    }
+                    <td className="c2">{v.date}</td>
+                    <td className="c3">{v.location}</td>
+                    <td className="c4">
+                      { (v.imageURL) ?
+                        <a href={v.imageURL} target="_blank">
+                           <img src={v.imageURL} />
+                        </a>
+                      : <span></span> }
+                    </td>
+                  </tr>;
+          })}
+          {newTourRow}
+          </tbody>
+        </table>
+      :
+        <span></span>
+      }
       {(this.state.editing) ?
         <button className={s.submitButton} onClick={this.submitEdit}>Submit</button>
       :
