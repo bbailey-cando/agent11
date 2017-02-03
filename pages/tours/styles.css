@@ -18,6 +18,7 @@ tours input { padding:10px; }
   background-color: #cc2000;
   color: #ddd;
   font-size: 1.3em;
+  cursor:pointer;
 }
 
 @media screen and (max-width: 1024px) {

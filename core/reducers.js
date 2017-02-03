@@ -33,6 +33,14 @@ const rootReducer = (state, action) => {
     case 'IMAGE_URL_FETCH_SUCCEEDED':
       return Object.assign({}, state, {image: action.imageURL});
 
+    case 'FETCH_TOUR_DATES':
+      console.log('fetching tour dates');
+      return state;
+    case 'TOUR_DATE_FETCH_SUCCEEDED':
+    case 'TOUR_DATE_FETCH_FAILED':
+      console.log(action);
+      return state;
+
     default:
       console.log('rootReducer(): unhandled action: ' + action.type);
       return state;

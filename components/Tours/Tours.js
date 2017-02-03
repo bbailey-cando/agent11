@@ -59,7 +59,7 @@ var Tours = React.createClass({
     if (this.state.editing){
       newTourRow =
         <tr key="newTour" id="newTourRow">
-          <td var className="c0"><a href="javascript:;" onClick={this.stopEdit}>cancel</a></td>
+          <td className="c0"><a href="javascript:;" onClick={this.stopEdit}>cancel</a></td>
           <td className="c1"><input type="text" id="newTourVenueNameOrLogoURL" defaultValue="Venue name or logo URL"/></td>
           <td className="c2"><input type="date" id="newTourDate" /></td>
           <td className="c3"><input type="text" id="newTourLocation" defaultValue="Location" /></td>
@@ -68,7 +68,7 @@ var Tours = React.createClass({
     } else {
       newTourRow =
         <tr key="newTour">
-          <td var className="c0">
+          <td className="c0">
             <a className={s.plusWrapper} href="javascript:;" onClick={this.startEdit}>
               <img className={s.plus}
                    src="https://firebasestorage.googleapis.com/v0/b/agent11-api.appspot.com/o/images%2Fassets%2FplusIcon.png?alt=media&token=53b629d0-0a21-4dd6-b10b-8034c52a7135" />
@@ -87,7 +87,7 @@ var Tours = React.createClass({
         <tbody>
         {data.map(function(v, index){
           return <tr key={index}>
-                  <td var className="c0">&nbsp;</td>
+                  <td className="c0">&nbsp;</td>
                   { (v.logoURL) ?
                     <td className="c1"><img className="logo" src={v.logoURL} title={v.name} /></td>
                   : <td className="c1">{v.name}</td>
@@ -121,10 +121,10 @@ function mapStoreToProps(storeState) {
 
 function mapDispatchToProps(dispatch) {
   return {
-/*  submitNewBiography: function(value){
-      let action = actions.putBiography(value);
-      dispatch(action);
-    }*/
+//  submitNewTourDate: function(value){
+//    let action = actions.putBiography(value);
+//    dispatch(action);
+//  }
   };
 }
 
