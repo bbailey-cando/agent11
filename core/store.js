@@ -30,6 +30,7 @@ export function newStore(){
   sagaMiddleware.run(sagas.putImageURL);
   sagaMiddleware.run(sagas.fetchImageURL);
   sagaMiddleware.run(sagas.fetchTourDates);
+  sagaMiddleware.run(sagas.putTourDates);
 
   store.dispatch(actions.fetchBiography());
   store.dispatch(actions.fetchImageURL());

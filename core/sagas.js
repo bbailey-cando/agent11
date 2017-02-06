@@ -122,4 +122,18 @@ function* fetchTourDates() {
   }
 }
 
-export default { putBiography, fetchBiography, uploadImage, putImageURL, fetchImageURL, fetchTourDates };
+function* putTourDates() {
+  while(true){
+    const action = yield take("PUT_TOUR_DATES");
+    console.log("accepted PUT_TOUR_DATES");
+    try {
+      let data = yield jsonClient.put('/tourDates', action.payload);
+      var whatToYield = { type: 'TOUR_DATE_PUT_SUCCEEDED', payload:data['body'] };
+      yield put(whatToYield);
+    } catch(error) {
+      yield put({ type: 'TOUR_DATE_PUT_FAILED', error });
+    }
+  }
+}
+
+export default { putBiography, fetchBiography, uploadImage, putImageURL, fetchImageURL, fetchTourDates, putTourDates };

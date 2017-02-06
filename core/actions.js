@@ -6,6 +6,7 @@ export const IMAGE_UPLOAD_SUCCEEDED = 'IMAGE_UPLOAD_SUCCEEDED';
 export const PUT_IMAGE_URL   = 'PUT_IMAGE_URL';
 export const FETCH_IMAGE_URL = 'FETCH_IMAGE_URL';
 export const FETCH_TOUR_DATES = 'FETCH_TOUR_DATES';
+export const PUT_TOUR_DATES   = 'PUT_TOUR_DATES';
 
 function putBiography(new_bio) {
   return {
@@ -60,4 +61,13 @@ function fetchTourDates(){
   };
 }
 
-export default { putBiography, fetchBiography, uploadImage, imageUploadSnapshot, imageUploadSucceded, putImageURL, fetchImageURL, fetchTourDates};
+function putTourDates(tourDates){
+  return {
+    type: PUT_TOUR_DATES,
+    payload: tourDates,
+  };
+}
+
+export default { putBiography, fetchBiography, uploadImage, imageUploadSnapshot,
+                 imageUploadSucceded, putImageURL, fetchImageURL,
+                 fetchTourDates, putTourDates};
